@@ -21,8 +21,7 @@
 				<td>${pelicula.nombre}</td>
 				<td>${pelicula.duracion}</td>
 				<td>${pelicula.descripcion}</td>
-			
-			
+
 			</tr>
 		</c:forEach>
 	</table>
