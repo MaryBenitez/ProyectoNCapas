@@ -22,6 +22,7 @@
 				<td>${pelicula.duracion}</td>
 				<td>${pelicula.descripcion}</td>
 			
+			
 			</tr>
 		</c:forEach>
 	</table>
