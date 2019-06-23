@@ -7,21 +7,14 @@
 </head>
 <body>
 	<h1>Cartelera</h1>
-	<h2>sara meca</h2>
-	<table class="table table-hover">
-		<thead class="thead-dark">
-		<tr>
-			<th>Nombre</th>
-			<th>Duracion</th>
-			<th>Descripcion</th>
-			
-		</tr>
-		</thead >
+	<table class="table table-hover" border="1">
+		
 		<c:forEach items="${pelicula}" var="pelicula">
 			<tr>
-				<td>${pelicula.nombre}</td>
-				<td>${pelicula.duracion}</td>
-				<td>${pelicula.descripcion}</td>
+				<td height="300px" width="200px">${pelicula.nombre}
+				<!-- <img src="data:image/png;base64,${imagen}" /></td> -->
+				<img height="300px" width="200px" src="data:image/jpeg;base64,${imagen}" /></td>
+				
 
 			</tr>
 		</c:forEach>

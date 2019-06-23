@@ -29,6 +29,9 @@ public class Pelicula {
 	private Boolean estado;
 	@Column(name="descripcion")
 	private String Descripcion;
+	@Column(name="imagen")
+	private byte[] img;
+	
 	
 	@OneToMany(mappedBy="pelicula",cascade = 
 		{ CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, 
@@ -65,6 +68,12 @@ public class Pelicula {
 	}
 	public void setDescripcion(String descripcion) {
 		Descripcion = descripcion;
+	}
+	public byte[] getImg() {
+		return img;
+	}
+	public void setImg(byte[] img) {
+		this.img = img;
 	}
 	
 	
