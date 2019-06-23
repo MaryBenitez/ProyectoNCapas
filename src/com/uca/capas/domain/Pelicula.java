@@ -75,6 +75,12 @@ public class Pelicula {
 	public void setImg(byte[] img) {
 		this.img = img;
 	}
-	
+	public String getImgDelegate() {
+		if(this.img == null) return "";
+		else {
+			String imageBase64 = new String(img);
+			return imageBase64;
+		}
+	}
 	
 }

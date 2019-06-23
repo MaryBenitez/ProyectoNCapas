@@ -22,10 +22,7 @@ public class ReservationController {
 	public ModelAndView showMovies() {
 		ModelAndView mav = new ModelAndView();
 		List<Pelicula> p = peliservice.findAll();
-		String imageBase64 = new String(p.get(0).getImg());
-		System.out.println(imageBase64);
 		mav.addObject("pelicula",p ); 
-		mav.addObject("imagen",imageBase64); 
 		mav.setViewName("Reservation");
 		
 		return mav;

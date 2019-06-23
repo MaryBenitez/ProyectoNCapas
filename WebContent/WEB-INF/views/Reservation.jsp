@@ -13,9 +13,7 @@
 			<tr>
 				<td height="300px" width="200px">${pelicula.nombre}
 				<!-- <img src="data:image/png;base64,${imagen}" /></td> -->
-				<img height="300px" width="200px" src="data:image/jpeg;base64,${imagen}" /></td>
-				
-
+				<img height="300px" width="200px" src="data:image/jpeg;base64,${pelicula.imgDelegate}" /></td>
 			</tr>
 		</c:forEach>
 	</table>
