@@ -2,14 +2,14 @@ package com.uca.capas.domain;
 
 public class Sala {
 
-	private int idSala;
+	private Integer idSala;
 	private String nsala;
-	private int cantAsientoN;
-	private int cantAsientoE;
-	public int getIdSala() {
+	private Integer cantAsientoN;
+	private Integer cantAsientoE;
+	public Integer getIdSala() {
 		return idSala;
 	}
-	public void setIdSala(int idSala) {
+	public void setIdSala(Integer idSala) {
 		this.idSala = idSala;
 	}
 	public String getNsala() {
@@ -18,16 +18,16 @@ public class Sala {
 	public void setNsala(String nsala) {
 		this.nsala = nsala;
 	}
-	public int getCantAsientoN() {
+	public Integer getCantAsientoN() {
 		return cantAsientoN;
 	}
-	public void setCantAsientoN(int cantAsientoN) {
+	public void setCantAsientoN(Integer cantAsientoN) {
 		this.cantAsientoN = cantAsientoN;
 	}
-	public int getCantAsientoE() {
+	public Integer getCantAsientoE() {
 		return cantAsientoE;
 	}
-	public void setCantAsientoE(int cantAsientoE) {
+	public void setCantAsientoE(Integer cantAsientoE) {
 		this.cantAsientoE = cantAsientoE;
 	}
 	

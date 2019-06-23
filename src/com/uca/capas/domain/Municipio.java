@@ -2,12 +2,12 @@ package com.uca.capas.domain;
 
 public class Municipio {
 
-	private int idMuni;
+	private Integer idMuni;
 	private String municipio;
-	public int getIdMuni() {
+	public Integer getIdMuni() {
 		return idMuni;
 	}
-	public void setIdMuni(int idMuni) {
+	public void setIdMuni(Integer idMuni) {
 		this.idMuni = idMuni;
 	}
 	public String getMunicipio() {

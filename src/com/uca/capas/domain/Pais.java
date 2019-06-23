@@ -2,12 +2,12 @@ package com.uca.capas.domain;
 
 public class Pais {
 
-	private int idPais;
+	private Integer idPais;
 	private String npais;
-	public int getIdPais() {
+	public Integer getIdPais() {
 		return idPais;
 	}
-	public void setIdPais(int idPais) {
+	public void setIdPais(Integer idPais) {
 		this.idPais = idPais;
 	}
 	public String getNpais() {

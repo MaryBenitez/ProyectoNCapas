@@ -2,15 +2,15 @@ package com.uca.capas.domain;
 
 public class Pelicula {
 
-	private int idPelicula;
+	private Integer idPelicula;
 	private String nombre;
 	private String duracion;
 	private Boolean estado;
 	private String Descripcion;
-	public int getIdPelicula() {
+	public Integer getIdPelicula() {
 		return idPelicula;
 	}
-	public void setIdPelicula(int idPelicula) {
+	public void setIdPelicula(Integer idPelicula) {
 		this.idPelicula = idPelicula;
 	}
 	public String getNombre() {

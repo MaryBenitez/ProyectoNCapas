@@ -2,7 +2,7 @@ package com.uca.capas.domain;
 
 public class Usuario {
 
-	private int id;
+	private Integer idUsuario;
 	private String usuario;
 	private String pass;
 	private String nombre;
@@ -12,14 +12,17 @@ public class Usuario {
 	private Double saldo;
 	private Boolean estado;
 	private Boolean tipo;
-	private int fk_pais;
-	private int fk_departamento;
-	private int fk_municipio;
-	public int getId() {
-		return id;
+	private Integer fk_pais;
+	private Integer fk_departamento;
+	private Integer fk_municipio;
+	private String comentario;
+	private Boolean iniciado;
+	
+	public Integer getId() {
+		return idUsuario;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setId(Integer id) {
+		this.idUsuario = id;
 	}
 	public String getUsuario() {
 		return usuario;
@@ -75,25 +78,34 @@ public class Usuario {
 	public void setTipo(Boolean tipo) {
 		this.tipo = tipo;
 	}
-	public int getFk_pais() {
+	public Integer getFk_pais() {
 		return fk_pais;
 	}
-	public void setFk_pais(int fk_pais) {
+	public void setFk_pais(Integer fk_pais) {
 		this.fk_pais = fk_pais;
 	}
-	public int getFk_departamento() {
+	public Integer getFk_departamento() {
 		return fk_departamento;
 	}
-	public void setFk_departamento(int fk_departamento) {
+	public void setFk_departamento(Integer fk_departamento) {
 		this.fk_departamento = fk_departamento;
 	}
-	public int getFk_municipio() {
+	public Integer getFk_municipio() {
 		return fk_municipio;
 	}
-	public void setFk_municipio(int fk_municipio) {
+	public void setFk_municipio(Integer fk_municipio) {
 		this.fk_municipio = fk_municipio;
 	}
-	
-	
-	
+	public Boolean getIniciado() {
+		return iniciado;
+	}
+	public void setIniciado(Boolean iniciado) {
+		this.iniciado = iniciado;
+	}
+	public String getComentario() {
+		return comentario;
+	}
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
 }

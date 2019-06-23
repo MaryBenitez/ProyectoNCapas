@@ -2,12 +2,13 @@ package com.uca.capas.domain;
 
 public class Departamento {
 
-	private int idDept;
+	private Integer idDept;
 	private String departamento;
-	public int getId() {
+	
+	public Integer getId() {
 		return idDept;
 	}
-	public void setId(int idDept) {
+	public void setId(Integer idDept) {
 		this.idDept = idDept;
 	}
 	public String getDepartamento() {
