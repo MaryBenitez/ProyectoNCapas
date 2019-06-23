@@ -1,22 +1,67 @@
 package com.uca.capas.domain;
 
-public class Usuario {
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table (schema="public",name="usuario")
+public class Usuario {
+	@Id
+	@GeneratedValue(generator="usuario_id_usuario_seq",strategy=GenerationType.AUTO)
+	@SequenceGenerator(name="usuario_id_usuario_seq",sequenceName="public.usuario_id_usuario_seq",allocationSize = 1)
+	@Column(name="id_usuario")
 	private Integer idUsuario;
+	@Column(name="usuario")
 	private String usuario;
+	@Column(name="pass")
 	private String pass;
+	@Column(name="nombre")
 	private String nombre;
+	@Column(name="apellido")
 	private String apellido;
+	@Column(name="f_nacimiento")
 	private String f_nacimiento;
+	@Column(name="direccion")
 	private String direccion;
+	@Column(name="saldo")
 	private Double saldo;
+	@Column(name="estado")
 	private Boolean estado;
+	@Column(name="tipo")
 	private Boolean tipo;
-	private Integer fk_pais;
-	private Integer fk_departamento;
-	private Integer fk_municipio;
+	@Column(name="comentario")
 	private String comentario;
+	@Column(name="iniciado")
 	private Boolean iniciado;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="fk_pais")
+	private Pais pais;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="fk_departamento")
+	private Departamento departamento;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="fk_municipio")
+	private Municipio municipio;
+	
+	@OneToMany(mappedBy="usuario",cascade = 
+		{ CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, 
+				CascadeType.REMOVE},fetch=FetchType.EAGER)
+	private List<Reserva> reserva;
 	
 	public Integer getId() {
 		return idUsuario;
@@ -77,24 +122,6 @@ public class Usuario {
 	}
 	public void setTipo(Boolean tipo) {
 		this.tipo = tipo;
-	}
-	public Integer getFk_pais() {
-		return fk_pais;
-	}
-	public void setFk_pais(Integer fk_pais) {
-		this.fk_pais = fk_pais;
-	}
-	public Integer getFk_departamento() {
-		return fk_departamento;
-	}
-	public void setFk_departamento(Integer fk_departamento) {
-		this.fk_departamento = fk_departamento;
-	}
-	public Integer getFk_municipio() {
-		return fk_municipio;
-	}
-	public void setFk_municipio(Integer fk_municipio) {
-		this.fk_municipio = fk_municipio;
 	}
 	public Boolean getIniciado() {
 		return iniciado;
