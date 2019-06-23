@@ -13,6 +13,7 @@ public class ReservationController {
 	@Autowired
 	PeliculasService peliservice;
 	
+	
 	@RequestMapping("/cartelera")
 	public ModelAndView showMovies() {
 		ModelAndView mav = new ModelAndView();
