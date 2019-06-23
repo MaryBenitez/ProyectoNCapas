@@ -26,7 +26,7 @@ public class FunxSala {
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="fk_funcion")
-	private Funcion funcion;
+	private Funcion funcions;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="fk_sala")

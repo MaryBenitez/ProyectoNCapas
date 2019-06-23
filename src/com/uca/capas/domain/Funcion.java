@@ -1,6 +1,7 @@
 package com.uca.capas.domain;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -36,15 +37,15 @@ public class Funcion {
 	@JoinColumn(name="fk_formato")
 	private Formato formato;
 	
-	@OneToMany(mappedBy="funcion",cascade = 
+	@OneToMany(mappedBy="funcions",cascade = 
 		{ CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, 
 				CascadeType.REMOVE},fetch=FetchType.EAGER)
-	private List<FunxSala> funxsala;
+	private Set<FunxSala> funxsala;
 	
 	@OneToMany(mappedBy="funcion",cascade = 
 		{ CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, 
 				CascadeType.REMOVE},fetch=FetchType.EAGER)
-	private List<Reserva> reserva;
+	private Set<Reserva> reserva;
 	
 	public Integer getIdFuncion() {
 		return idFuncion;
