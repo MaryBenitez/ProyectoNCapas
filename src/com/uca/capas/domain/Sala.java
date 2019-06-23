@@ -16,6 +16,7 @@ import javax.persistence.Table;
 @Entity
 @Table (schema="public",name="sala")
 public class Sala {
+	
 	@Id
 	@GeneratedValue(generator="sala_id_sala_seq",strategy=GenerationType.AUTO)
 	@SequenceGenerator(name="sala_id_sala_seq",sequenceName="public.sala_id_sala_seq",allocationSize = 1)
