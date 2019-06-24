@@ -83,4 +83,10 @@ public class Pelicula {
 		}
 	}
 	
+	public String getActivoDelegate() {
+		if(this.estado == null) return "";
+		else {
+			return estado == true ?"Activa":"Inactiva";
+		}
+	}
 }

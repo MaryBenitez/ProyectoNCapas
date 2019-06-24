@@ -10,4 +10,8 @@ public class MainController {
 	public String initMain() {
 		return "main";
 	}
+	@RequestMapping("/user/dashboard")
+	public String userDashboard() {
+		return "dashboard_user";
+	}
 }

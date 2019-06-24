@@ -19,5 +19,11 @@ public class PeliculasServiceImp implements PeliculasService{
 		// TODO Auto-generated method stub
 		return pelirepo.findAll();
 	}
+	
+	@Override
+	public Pelicula save(Pelicula p) {
+		// TODO Auto-generated method stub
+		return pelirepo.save(p);
+	}
 
 }
