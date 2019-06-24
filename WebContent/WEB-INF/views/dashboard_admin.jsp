@@ -23,7 +23,9 @@
 			</form>
 		</td>
 		<td> 
-			<button>Administrar Usuarios</button>
+			<form action="${pageContext.request.contextPath}/adminUsers" method="post">
+			<input class="btn btn-outline-dark" type="submit" value="Administrar Usuarios">
+			</form>
 		</td>
 		<td> 
 			<button>Administrar Funciones</button>

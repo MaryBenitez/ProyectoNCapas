@@ -13,6 +13,7 @@ public class UsuarioServiceImp implements UsuarioService{
 
 	@Autowired
 	UsuarioRepository usrRepo;
+	
 	@Override
 	public List<Usuario> findAll() {
 		return usrRepo.findAll();
@@ -21,7 +22,7 @@ public class UsuarioServiceImp implements UsuarioService{
 
 	@Override
 	public Usuario findOne(Integer id) {
-		return usrRepo.getOne(id);
+		return usrRepo.findById(id).get();
 	}
 
 }

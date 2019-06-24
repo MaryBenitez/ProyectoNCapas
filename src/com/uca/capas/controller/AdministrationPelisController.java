@@ -13,7 +13,7 @@ import com.uca.capas.domain.Pelicula;
 import com.uca.capas.service.PeliculasService;
 
 @Controller
-public class AdministrationController {
+public class AdministrationPelisController {
 	
 	@Autowired
 	PeliculasService pelServ;

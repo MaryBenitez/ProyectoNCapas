@@ -21,8 +21,9 @@ public class Usuario {
 	@Id
 	@GeneratedValue(generator="usuario_id_usuario_seq",strategy=GenerationType.AUTO)
 	@SequenceGenerator(name="usuario_id_usuario_seq",sequenceName="public.usuario_id_usuario_seq",allocationSize = 1)
+	
 	@Column(name="id_usuario")
-	private Integer idUsuario;
+	private Integer idUsr;
 	@Column(name="usuario")
 	private String usuario;
 	@Column(name="pass")
@@ -63,11 +64,12 @@ public class Usuario {
 				CascadeType.REMOVE},fetch=FetchType.EAGER)
 	private List<Reserva> reserva;
 	
-	public Integer getId() {
-		return idUsuario;
+	
+	public Integer getIdUsr() {
+		return idUsr;
 	}
-	public void setId(Integer id) {
-		this.idUsuario = id;
+	public void setIdUsr(Integer id) {
+		this.idUsr = id;
 	}
 	public String getUsuario() {
 		return usuario;
