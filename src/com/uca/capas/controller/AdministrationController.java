@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Pelicula;
@@ -39,9 +40,12 @@ public class AdministrationController {
 		return mav;
 	}
 	@RequestMapping("/savePeli")
-	public ModelAndView saveMovies(@ModelAttribute ("peli") Pelicula p ) {
+	public ModelAndView saveMovies(@ModelAttribute ("peli") Pelicula p, @RequestParam("xd") String ruta ) {
 		ModelAndView mav = new ModelAndView();
 		//System.out.println("HOLA"+p.getImg().toString());
+		String[] base = ruta.split(",");
+		System.out.println(base[1]);
+		p.setImg(base[1].getBytes());
 		pelServ.save(p);
 		mav.setViewName("redirect:/adminMovies/");
 		return mav;

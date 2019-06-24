@@ -27,6 +27,8 @@
 		<form:input class="form-control" type="text" name="descripcion" path="descripcion" value="${peli.descripcion}"/>
 		<label>Imagen:</label>
 		<form:input type="file" name="image" path="img" onchange="encodeImagetoBase64(this)"/>
+		<input id="xd" name="xd" type="hidden">
+    	<img id="mi_imagen" src="" alt="">
 		<input class="btn btn-info my-4 btn-block" type="submit" value="Actualizar">
 	</form:form>
 	</div>
@@ -45,6 +47,9 @@
 
 	    $(".link").text(reader.result);
 
+	    $("#mi_imagen").attr("src",reader.result);
+	    
+	    $("#xd").val(reader.result);
 	  }
 
 	  reader.readAsDataURL(file);
