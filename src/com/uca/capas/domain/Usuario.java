@@ -137,4 +137,22 @@ public class Usuario {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
+	public Pais getPais() {
+		return pais;
+	}
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+	public Municipio getMunicipio() {
+		return municipio;
+	}
+	public void setMunicipio(Municipio municipio) {
+		this.municipio = municipio;
+	}
 }

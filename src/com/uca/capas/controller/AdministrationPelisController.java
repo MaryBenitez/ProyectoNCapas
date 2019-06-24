@@ -28,7 +28,7 @@ public class AdministrationPelisController {
 		ModelAndView mav = new ModelAndView();
 		List<Pelicula> pelis = pelServ.findAll();
 		mav.addObject("pelis",pelis);
-		mav.setViewName("moviesCat");
+		mav.setViewName("admin/moviesCat");
 		return mav;
 	}
 	@RequestMapping("/addPeli")
@@ -36,7 +36,7 @@ public class AdministrationPelisController {
 		ModelAndView mav = new ModelAndView();
 		Pelicula peli = new Pelicula();
 		mav.addObject("peli",peli);
-		mav.setViewName("movieForm");
+		mav.setViewName("admin/movieForm");
 		return mav;
 	}
 	@RequestMapping("/savePeli")
@@ -75,7 +75,7 @@ public class AdministrationPelisController {
 		peli = pelServ.findOne(id);
 		peli.setImg(pelServ.findOne(id).getImg());
 		mav.addObject("peli", peli);
-		mav.setViewName("movieForm2");
+		mav.setViewName("admin/movieForm2");
 		return mav;
 	}
 	

@@ -26,7 +26,7 @@
 			<th>Comentario</th>
 			<th>Sesion</th>
 			<th> </th>
-			<th><form action="${pageContext.request.contextPath}/addPeli" method = "post">
+			<th><form action="${pageContext.request.contextPath}/addUser" method = "post">
 			<input class="btn btn-outline-dark" type="submit" value="Agregar Usuario">
 			</form> </th>
 		</tr>

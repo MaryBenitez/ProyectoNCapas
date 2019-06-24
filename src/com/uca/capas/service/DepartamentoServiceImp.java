@@ -23,7 +23,7 @@ public class DepartamentoServiceImp implements DepartamentoService{
 	@Override
 	public Departamento findOne(Integer id) {
 		// TODO Auto-generated method stub
-		return depRepo.getOne(id);
+		return depRepo.findById(id).get();
 	}
 
 }

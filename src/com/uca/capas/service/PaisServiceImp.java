@@ -22,7 +22,7 @@ public class PaisServiceImp implements PaisService{
 	@Override
 	public Pais findOne(Integer id) {
 		// TODO Auto-generated method stub
-		return paisRep.getOne(id);
+		return paisRep.findById(id).get();
 	}
 
 }

@@ -29,10 +29,10 @@ public class Departamento {
 				CascadeType.REMOVE},fetch=FetchType.EAGER)
 	private List<Usuario> usuario;
 	
-	public Integer getId() {
+	public Integer getIdDept() {
 		return idDept;
 	}
-	public void setId(Integer idDept) {
+	public void setIdDept(Integer idDept) {
 		this.idDept = idDept;
 	}
 	public String getDepartamento() {

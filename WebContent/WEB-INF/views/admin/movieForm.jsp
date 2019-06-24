@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div style="width:70%; margin: auto;">
+	<div style="width:50%; margin: auto;">
 	<h1 >Inserte los datos de Pelicula</h1>
 		<form:form class="text-center border border-light" action="${pageContext.request.contextPath}/savePeli" method="POST" modelAttribute="peli">
 		<form:input type="hidden" name="idPeli" path="idPelicula" value="${peli.idPelicula}" />

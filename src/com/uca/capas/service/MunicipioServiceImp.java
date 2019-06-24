@@ -23,7 +23,7 @@ public class MunicipioServiceImp implements MunicipioService{
 	@Override
 	public Municipio findOne(Integer id) {
 		// TODO Auto-generated method stub
-		return munRepo.getOne(id);
+		return munRepo.findById(id).get();
 	}
 
 }
