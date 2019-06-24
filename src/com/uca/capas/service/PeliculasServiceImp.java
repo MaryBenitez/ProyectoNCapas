@@ -26,4 +26,10 @@ public class PeliculasServiceImp implements PeliculasService{
 		return pelirepo.save(p);
 	}
 
+	@Override
+	public Pelicula findOne(Integer id) {
+		// TODO Auto-generated method stub
+		return pelirepo.findById(id).get();
+	}
+
 }

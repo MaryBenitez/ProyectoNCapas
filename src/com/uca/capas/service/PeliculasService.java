@@ -9,4 +9,6 @@ public interface PeliculasService  {
 	public List<Pelicula> findAll();
 
 	public Pelicula save(Pelicula p);
+
+	public Pelicula findOne(Integer id);
 }

@@ -31,11 +31,11 @@
 				<tr>
 					<td>
 					<form action="${pageContext.request.contextPath}/peliUpdate" method="post">
-						<input type="hidden" value="${pelis.idPelicula}" name="code">
+						<input type="hidden" value="${pelis.idPelicula}" name="codigoP">
 						<input class="btn btn-outline-dark" type="submit" value="Editar">
 					</form>
 					<form action="${pageContext.request.contextPath}/peliStatus" method="post">
-						<input type="hidden" value="${pelis.idPelicula}" name="code">
+						<input type="hidden" value="${pelis.idPelicula}" name="codigoP">
 						<c:if test="${pelis.estado == false}">
 							<input class="btn btn-outline-dark" type="submit" value="Activar">
 						</c:if>

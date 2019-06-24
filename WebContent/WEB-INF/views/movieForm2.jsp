@@ -14,7 +14,7 @@
 <body>
 	<div style="width:70%; margin: auto;">
 	<h1 >Inserte los datos de Pelicula</h1>
-		<form:form class="text-center border border-light" action="${pageContext.request.contextPath}/savePeli" method="POST" modelAttribute="peli">
+		<form:form class="text-center border border-light" action="${pageContext.request.contextPath}/savePeli2" method="POST" modelAttribute="peli">
 		<form:input type="hidden" name="idPeli" path="idPelicula" value="${peli.idPelicula}" />
 		<label>Ingrese un nombre : </label>
 		<form:input class="form-control" type="text" name="nombre" path="nombre" value="${peli.nombre}"/>
@@ -25,37 +25,8 @@
 		<form:radiobutton name="estado" path="estado" value="false"/><label>Inactivo</label><br>
 		<label>Descripcion: </label>
 		<form:input class="form-control" type="text" name="descripcion" path="descripcion" value="${peli.descripcion}"/>
-		<label>Imagen:</label>
-		<form:input type="file" name="image" path="img" onchange="encodeImagetoBase64(this)"/>
-		<input id="xd" name="xd" type="hidden">
-    	<img height="300px" width="200px" id="mi_imagen" src="" alt="">
 		<input class="btn btn-info my-4 btn-block" type="submit" value="Actualizar">
 	</form:form>
 	</div>
-	
-	<script type="text/javascript">
-
-   function encodeImagetoBase64(element) {
-
-	  var file = element.files[0];
-
-	  var reader = new FileReader();
-
-	  reader.onloadend = function() {
-
-	    $(".link").attr("href",reader.result);
-
-	    $(".link").text(reader.result);
-
-	    $("#mi_imagen").attr("src",reader.result);
-	    
-	    $("#xd").val(reader.result);
-	  }
-
-	  reader.readAsDataURL(file);
-
-	}
-
-</script>
 </body>
 </html>

@@ -42,7 +42,6 @@ public class AdministrationController {
 	@RequestMapping("/savePeli")
 	public ModelAndView saveMovies(@ModelAttribute ("peli") Pelicula p, @RequestParam("xd") String ruta ) {
 		ModelAndView mav = new ModelAndView();
-		//System.out.println("HOLA"+p.getImg().toString());
 		String[] base = ruta.split(",");
 		System.out.println(base[1]);
 		p.setImg(base[1].getBytes());
@@ -50,8 +49,35 @@ public class AdministrationController {
 		mav.setViewName("redirect:/adminMovies/");
 		return mav;
 	}
+	@RequestMapping("/savePeli2")
+	public ModelAndView saveMovies2(@ModelAttribute ("peli") Pelicula p) {
+		ModelAndView mav = new ModelAndView();
+		pelServ.save(p);
+		mav.setViewName("redirect:/adminMovies/");
+		return mav;
+	}
 	
-	
+	@RequestMapping("/peliStatus")
+	public ModelAndView editEstado(@RequestParam ("codigoP") Integer id ) {
+		ModelAndView mav = new ModelAndView();
+		Pelicula peli = new Pelicula();
+		peli = pelServ.findOne(id);
+		peli.setEstado(!peli.getEstado());
+		pelServ.save(peli);
+		mav.addObject("peli", peli);
+		mav.setViewName("redirect:/adminMovies/");
+		return mav;
+	}
+	@RequestMapping("/peliUpdate")
+	public ModelAndView editPeli(@RequestParam ("codigoP") Integer id ) {
+		ModelAndView mav = new ModelAndView();
+		Pelicula peli = new Pelicula();
+		peli = pelServ.findOne(id);
+		peli.setImg(pelServ.findOne(id).getImg());
+		mav.addObject("peli", peli);
+		mav.setViewName("movieForm2");
+		return mav;
+	}
 	
 	
 }
