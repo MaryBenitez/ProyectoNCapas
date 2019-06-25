@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table (schema="public",name="pelicula")
@@ -31,7 +32,6 @@ public class Pelicula {
 	private String Descripcion;
 	@Column(name="imagen")
 	private byte[] img;
-	
 	
 	@OneToMany(mappedBy="pelicula",cascade = 
 		{ CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, 

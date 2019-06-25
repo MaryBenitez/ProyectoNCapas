@@ -66,14 +66,22 @@ public class AdministrationPelisController {
 	@RequestMapping("/pelis")
 	public ModelAndView savePeli(@ModelAttribute ("peli") Pelicula p, 
 			@RequestParam("xd") String ruta ,
-			@RequestParam ("img") String image){
+			@RequestParam ("otra") String image){
 		ModelAndView mav = new ModelAndView();
+		System.out.println(image);
 		if(p.getIdPelicula()==null) {
 			String[] base = ruta.split(",");
 			System.out.println(base[1]);
 			p.setImg(base[1].getBytes());
 		}else {
-			p.setImg(image.getBytes());
+			System.out.println(image);
+			String[] arr =  image.split(",");
+			if(arr.length > 1) {
+				
+				p.setImg(arr[1].getBytes());
+			}else {
+				p.setImg(arr[0].getBytes());
+			}
 		}
 		pelServ.save(p);
 		mav.setViewName("redirect:adminMovies/");

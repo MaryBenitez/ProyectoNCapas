@@ -29,7 +29,7 @@
 		<form:input type="file" name="image" path="img" onchange="encodeImagetoBase64(this)"/>
 		<input id="xd" name="xd" type="hidden">
     	<img height="300px" width="200px" id="mi_imagen" src="" alt="">
-    	<form:input type="hidden" name="img" path="img" value="${peli.imgDelegate}"/>
+    	<input type="hidden" id="otra" name="otra" value="${peli.imgDelegate}"/>
     	<img height="300px" width="200px" src="data:image/jpeg;base64,${peli.imgDelegate}" />
 		<input class="btn btn-info my-4 btn-block" type="submit" value="Actualizar">
 	</form:form>
@@ -52,6 +52,9 @@
 	    $("#mi_imagen").attr("src",reader.result);
 	    
 	    $("#xd").val(reader.result);
+		
+	    $("#otra").val(reader.result);
+	    
 	  }
 
 	  reader.readAsDataURL(file);
