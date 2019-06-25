@@ -1,5 +1,6 @@
 package com.uca.capas.controller;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,19 +14,16 @@ import com.uca.capas.domain.Departamento;
 import com.uca.capas.domain.Municipio;
 import com.uca.capas.domain.Pais;
 import com.uca.capas.domain.Usuario;
-import com.uca.capas.repositories.DepartamentoRepository;
-import com.uca.capas.repositories.MunicipioRepository;
-import com.uca.capas.repositories.PaisRepository;
-import com.uca.capas.repositories.UsuarioRepository;
 import com.uca.capas.service.DepartamentoService;
 import com.uca.capas.service.MunicipioService;
 import com.uca.capas.service.PaisService;
+import com.uca.capas.service.UsuarioService;
 
 @Controller
 public class AdministrationUsersController {
 	
 	@Autowired
-	UsuarioRepository userServ;
+	UsuarioService userServ;
 	@Autowired
 	PaisService paisServ;
 	@Autowired
@@ -62,7 +60,9 @@ public class AdministrationUsersController {
 	public ModelAndView saveMovies(@ModelAttribute ("usuario") Usuario p, 
 			@RequestParam("select") Integer idp, 
 			@RequestParam("select2") Integer idd, 
-			@RequestParam("select3") Integer idm) {
+			@RequestParam("select3") Integer idm,
+			@RequestParam("iniciado") Boolean act,
+			@RequestParam("saldo") Double saldo) {
 		ModelAndView mav = new ModelAndView();
 		Pais pais = paisServ.findOne(idp);
 		Departamento dept = depServ.findOne(idd);
@@ -73,11 +73,39 @@ public class AdministrationUsersController {
 		if(p.getIdUsr()== null) {
 			p.setSaldo(20.00);
 			p.setIniciado(false);
+		}else {
+			p.setSaldo(saldo);
+			p.setIniciado(act);
 		}
-		
 		userServ.save(p);
 		mav.setViewName("redirect:adminUsers/");
 		return mav;
 	}
 	
+	@RequestMapping("/updateUser")
+	public ModelAndView updateMovies( @RequestParam ("codigoP") Integer p) {
+		ModelAndView mav = new ModelAndView();
+		Usuario u = userServ.findOne(p);
+		List<Pais> pais = paisServ.findAll();
+		List<Municipio> muni = muniServ.findAll();
+		List<Departamento> dep = depServ.findAll();
+		mav.addObject("paises",pais);
+		mav.addObject("munis", muni);
+		mav.addObject("deps", dep);
+		mav.addObject("usuario",u);
+		mav.setViewName("admin/userForm");
+		return mav;
+	}
+	
+	@RequestMapping("/statusUsr")
+	public ModelAndView editEstadoUser(@RequestParam ("codigoP") Integer id ) {
+		ModelAndView mav = new ModelAndView();
+		Usuario user = new Usuario();
+		user = userServ.findOne(id);
+		user.setEstado(!user.getEstado());
+		userServ.save(user);
+		mav.addObject("peli", user);
+		mav.setViewName("redirect:adminUsers/");
+		return mav;
+	}
 }

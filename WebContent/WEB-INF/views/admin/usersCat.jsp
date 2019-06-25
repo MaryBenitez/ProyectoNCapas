@@ -33,7 +33,7 @@
 			<c:forEach items="${usuarios}" var="usuarios">
 				<tr>
 					<td>
-					<form action="${pageContext.request.contextPath}/updateUsr" method="post">
+					<form action="${pageContext.request.contextPath}/updateUser" method="post">
 						<input type="hidden" value="${usuarios.idUsr}" name="codigoP">
 						<input class="btn btn-outline-dark" type="submit" value="Editar">
 					</form>

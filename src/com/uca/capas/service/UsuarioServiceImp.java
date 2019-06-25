@@ -25,4 +25,10 @@ public class UsuarioServiceImp implements UsuarioService{
 		return usrRepo.findById(id).get();
 	}
 
+	@Override
+	public void save(Usuario p) {
+		usrRepo.save(p);
+		
+	}
+
 }

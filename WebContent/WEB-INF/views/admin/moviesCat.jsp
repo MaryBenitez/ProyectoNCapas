@@ -32,6 +32,7 @@
 					<td>
 					<form action="${pageContext.request.contextPath}/peliUpdate" method="post">
 						<input type="hidden" value="${pelis.idPelicula}" name="codigoP">
+						<input type="hidden" value="${pelis.imgDelegate}" name="img">
 						<input class="btn btn-outline-dark" type="submit" value="Editar">
 					</form>
 					<form action="${pageContext.request.contextPath}/peliStatus" method="post">

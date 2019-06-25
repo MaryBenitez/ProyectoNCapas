@@ -14,7 +14,7 @@
 <body>
 	<div style="width:50%; margin: auto;">
 	<h1 >Inserte los datos de Pelicula</h1>
-		<form:form class="text-center border border-light" action="${pageContext.request.contextPath}/savePeli" method="POST" modelAttribute="peli">
+		<form:form class="text-center border border-light" action="${pageContext.request.contextPath}/pelis" method="post" modelAttribute="peli">
 		<form:input type="hidden" name="idPeli" path="idPelicula" value="${peli.idPelicula}" />
 		<label>Ingrese un nombre : </label>
 		<form:input class="form-control" type="text" name="nombre" path="nombre" value="${peli.nombre}"/>
@@ -29,6 +29,8 @@
 		<form:input type="file" name="image" path="img" onchange="encodeImagetoBase64(this)"/>
 		<input id="xd" name="xd" type="hidden">
     	<img height="300px" width="200px" id="mi_imagen" src="" alt="">
+    	<form:input type="hidden" name="img" path="img" value="${peli.imgDelegate}"/>
+    	<img height="300px" width="200px" src="data:image/jpeg;base64,${peli.imgDelegate}" />
 		<input class="btn btn-info my-4 btn-block" type="submit" value="Actualizar">
 	</form:form>
 	</div>

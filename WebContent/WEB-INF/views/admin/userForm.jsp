@@ -17,7 +17,7 @@
 		<form:form class="text-center border border-light" action="${pageContext.request.contextPath}/saveUser" method="POST" modelAttribute="usuario">
 		<form:input type="hidden" name="idUsr" path="idUsr" value="${usuario.idUsr}"/>
 		<label>Username : </label>
-		<form:input class="form-control" type="text" name="usuario" path="usuario" value="${usuario.nombre}"/>
+		<form:input class="form-control" type="text" name="usuario" path="usuario" value="${usuario.usuario}"/>
 		<label>Password</label>
 		<form:input class="form-control" type="password" name="pass" path="pass" value="${usuario.pass}"/>
 		<label>Nombre: </label>
@@ -52,6 +52,8 @@
 			<option value="${munis.idMuni}">${munis.municipio} </option>
 		</c:forEach>
 		</select>
+		<form:input type="hidden" name="saldo" path="saldo" value="${usuario.saldo}"/>
+		<form:input type="hidden" name="iniciado" path="iniciado" value="${usuario.iniciado}"/>
 		<input class="btn btn-info my-4 btn-block" type="submit" value="Actualizar">
 	</form:form>
 	</div>

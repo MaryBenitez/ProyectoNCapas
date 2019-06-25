@@ -9,4 +9,6 @@ public interface UsuarioService {
 	public List<Usuario> findAll();
 	
 	public Usuario findOne(Integer id);
+
+	public void save(Usuario p);
 }

@@ -39,23 +39,6 @@ public class AdministrationPelisController {
 		mav.setViewName("admin/movieForm");
 		return mav;
 	}
-	@RequestMapping("/savePeli")
-	public ModelAndView saveMovies(@ModelAttribute ("peli") Pelicula p, @RequestParam("xd") String ruta ) {
-		ModelAndView mav = new ModelAndView();
-		String[] base = ruta.split(",");
-		System.out.println(base[1]);
-		p.setImg(base[1].getBytes());
-		pelServ.save(p);
-		mav.setViewName("redirect:/adminMovies/");
-		return mav;
-	}
-	@RequestMapping("/savePeli2")
-	public ModelAndView saveMovies2(@ModelAttribute ("peli") Pelicula p) {
-		ModelAndView mav = new ModelAndView();
-		pelServ.save(p);
-		mav.setViewName("redirect:/adminMovies/");
-		return mav;
-	}
 	
 	@RequestMapping("/peliStatus")
 	public ModelAndView editEstado(@RequestParam ("codigoP") Integer id ) {
@@ -65,17 +48,35 @@ public class AdministrationPelisController {
 		peli.setEstado(!peli.getEstado());
 		pelServ.save(peli);
 		mav.addObject("peli", peli);
-		mav.setViewName("redirect:/adminMovies/");
+		mav.setViewName("redirect:adminMovies/");
 		return mav;
 	}
+	
 	@RequestMapping("/peliUpdate")
-	public ModelAndView editPeli(@RequestParam ("codigoP") Integer id ) {
+	public ModelAndView editPeli(@RequestParam ("codigoP") Integer id, 
+			@RequestParam ("img") String image) {
 		ModelAndView mav = new ModelAndView();
 		Pelicula peli = new Pelicula();
 		peli = pelServ.findOne(id);
-		peli.setImg(pelServ.findOne(id).getImg());
 		mav.addObject("peli", peli);
-		mav.setViewName("admin/movieForm2");
+		mav.setViewName("admin/movieForm");
+		return mav;
+	}
+	
+	@RequestMapping("/pelis")
+	public ModelAndView savePeli(@ModelAttribute ("peli") Pelicula p, 
+			@RequestParam("xd") String ruta ,
+			@RequestParam ("img") String image){
+		ModelAndView mav = new ModelAndView();
+		if(p.getIdPelicula()==null) {
+			String[] base = ruta.split(",");
+			System.out.println(base[1]);
+			p.setImg(base[1].getBytes());
+		}else {
+			p.setImg(image.getBytes());
+		}
+		pelServ.save(p);
+		mav.setViewName("redirect:adminMovies/");
 		return mav;
 	}
 	
