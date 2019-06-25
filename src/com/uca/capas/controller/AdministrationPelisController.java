@@ -20,7 +20,7 @@ public class AdministrationPelisController {
 	
 	@RequestMapping("/admin/dashboard")
 	public String adminDashboard() {
-		return "dashboard_admin";
+		return "admin/peliculas/dashboard_admin";
 	}
 	
 	@RequestMapping("/adminMovies")
@@ -28,7 +28,7 @@ public class AdministrationPelisController {
 		ModelAndView mav = new ModelAndView();
 		List<Pelicula> pelis = pelServ.findAll();
 		mav.addObject("pelis",pelis);
-		mav.setViewName("admin/moviesCat");
+		mav.setViewName("admin/peliculas/moviesCat");
 		return mav;
 	}
 	@RequestMapping("/addPeli")
@@ -36,7 +36,7 @@ public class AdministrationPelisController {
 		ModelAndView mav = new ModelAndView();
 		Pelicula peli = new Pelicula();
 		mav.addObject("peli",peli);
-		mav.setViewName("admin/movieForm");
+		mav.setViewName("admin/peliculas/movieForm");
 		return mav;
 	}
 	
@@ -59,7 +59,7 @@ public class AdministrationPelisController {
 		Pelicula peli = new Pelicula();
 		peli = pelServ.findOne(id);
 		mav.addObject("peli", peli);
-		mav.setViewName("admin/movieForm");
+		mav.setViewName("admin/peliculas/movieForm");
 		return mav;
 	}
 	

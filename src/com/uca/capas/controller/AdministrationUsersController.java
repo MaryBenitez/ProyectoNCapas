@@ -36,7 +36,7 @@ public class AdministrationUsersController {
 		ModelAndView mav = new ModelAndView();
 		List<Usuario> usuarios = userServ.findAll();
 		mav.addObject("usuarios",usuarios);
-		mav.setViewName("admin/usersCat");
+		mav.setViewName("admin/peliculas/usersCat");
 		return mav;
 	}
 	

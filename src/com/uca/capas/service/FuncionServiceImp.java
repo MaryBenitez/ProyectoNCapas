@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.uca.capas.domain.Formato;
 import com.uca.capas.domain.Funcion;
+import com.uca.capas.domain.Pelicula;
+import com.uca.capas.dto.FunPelForDTO;
 import com.uca.capas.repositories.FuncionRepository;
 
 @Service
@@ -13,6 +16,10 @@ public class FuncionServiceImp implements FuncionService{
 
 	@Autowired
 	FuncionRepository funRepo;
+	@Autowired
+	PeliculasService pService;
+	@Autowired
+	FormatoService foService;
 	@Override
 	public List<Funcion> findAll() {
 		// TODO Auto-generated method stub
@@ -26,4 +33,23 @@ public class FuncionServiceImp implements FuncionService{
 		return funRepo.getOne(id);
 	}
 
+	@Override
+	public List<FunPelForDTO> findFuncByPel() {
+		// TODO Auto-generated method stub
+		return funRepo.fetchFuncPelForInnerJoin();
+	}
+	public Funcion save(FunPelForDTO dto) {
+		Pelicula p = pService.findOne(Integer.parseInt(dto.getPelicula()));
+		Formato fo =  foService.findOne(Integer.parseInt(dto.getFormato()));
+		Funcion f = new Funcion();
+		f.setHora(dto.getHora());
+		f.setFecha(dto.getFecha());
+		f.setActivo(true);
+		f.setPelicula(p);
+		f.setFormato(fo);
+		
+		
+		return funRepo.save(f);
+	}
+	
 }

@@ -28,7 +28,9 @@
 			</form>
 		</td>
 		<td> 
-			<button>Administrar Funciones</button>
+			<form action="${pageContext.request.contextPath}/adminFunciones" method="post">
+			<input class="btn btn-outline-dark" type="submit" value="Administrar Funciones">
+			</form>
 		</td>
 	</tr>
 </table>

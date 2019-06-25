@@ -30,7 +30,7 @@
 		<input id="xd" name="xd" type="hidden">
     	<img height="300px" width="200px" id="mi_imagen" src="" alt="">
     	<input type="hidden" id="otra" name="otra" value="${peli.imgDelegate}"/>
-    	<img height="300px" width="200px" src="data:image/jpeg;base64,${peli.imgDelegate}" />
+    	<%-- <img height="300px" width="200px" src="data:image/jpeg;base64,${peli.imgDelegate}" /> --%>
 		<input class="btn btn-info my-4 btn-block" type="submit" value="Actualizar">
 	</form:form>
 	</div>

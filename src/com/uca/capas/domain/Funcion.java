@@ -27,6 +27,8 @@ public class Funcion {
 	private String hora;
 	@Column(name="fecha")
 	private String fecha;
+	@Column(name="state")
+	private Boolean activo;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="fk_pelicula")
@@ -63,6 +65,31 @@ public class Funcion {
 	}
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
+	}
+	public Boolean getActivo() {
+		return activo;
+	}
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
+	
+	public Pelicula getPelicula() {
+		return pelicula;
+	}
+	public void setPelicula(Pelicula pelicula) {
+		this.pelicula = pelicula;
+	}
+	public Formato getFormato() {
+		return formato;
+	}
+	public void setFormato(Formato formato) {
+		this.formato = formato;
+	}
+	public String getActivoDelegate() {
+		if(this.activo == null) return "";
+		else {
+			return activo == true ?"Activa":"Inactiva";
+		}
 	}
 	
 }
