@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.uca.capas.domain.Formato;
+import com.uca.capas.domain.Funcion;
 import com.uca.capas.domain.Pelicula;
 import com.uca.capas.dto.FunPelForDTO;
 import com.uca.capas.service.FormatoService;
 import com.uca.capas.service.FuncionService;
 import com.uca.capas.service.PeliculasService;
+
+
 
 @Controller
 public class AdministrationFuncionesController {
@@ -57,15 +60,30 @@ public class AdministrationFuncionesController {
 		return mav;
 	}
 	@RequestMapping("/funcUpdate")
-	public ModelAndView editFunc(@RequestParam ("codigoP") Integer id) {
+	public ModelAndView editFunc(@RequestParam ("codF") Integer id) {
 		ModelAndView mav = new ModelAndView();
-		Pelicula peli = new Pelicula();
-		peli = pelServ.findOne(id);
-		mav.addObject("peli", peli);
-		mav.setViewName("admin/peliculas/movieForm");
+		Funcion funcion= fService.findOne(id);
+		FunPelForDTO funcionDTO =  new FunPelForDTO();
+		List<Pelicula> pelis = pService.findAll();
+		List<Formato> formato = forService.findAll();
+		funcionDTO = fService.findOneDTO(id);
+		mav.addObject("funcionDTO", funcionDTO);
+		mav.addObject("funcion", funcion);
+		mav.addObject("pelis", pelis);
+		mav.addObject("formato", formato);
+		mav.setViewName("admin/funciones/funcionesForm");
 		return mav;
 	}
-	
+	@RequestMapping("/funStatus")
+	public ModelAndView editEstado(@RequestParam ("codF") Integer id ) {
+		ModelAndView mav = new ModelAndView();
+		Funcion fun= fService.findOne(id);
+		fun.setActivo(!fun.getActivo());
+		fService.normalSave(fun);
+		mav.addObject("fun", fun);
+		mav.setViewName("redirect:adminFunciones/");
+		return mav;
+	}
 	
 	
 }

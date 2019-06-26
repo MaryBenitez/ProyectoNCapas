@@ -28,18 +28,19 @@
 		
 			<th> </th>
 			<th><form action="${pageContext.request.contextPath}/addFuncion" method = "post">
+			
 			<input class="btn btn-outline-dark" type="submit" value="Agregar Funcion">
 			</form> </th>
 		</tr>
 		<c:forEach items="${funciones}" var="funciones">
 				<tr>
 					<td>
-					<form action="${pageContext.request.contextPath}/funUpdate" method="post">
-						<%-- <input type="hidden" value="${funciones.idFuncion}" name="codigoP"> --%>
+					<form action="${pageContext.request.contextPath}/funcUpdate" method="post">
+						<input type="hidden" value="${funciones.idFuncion}" name="codF">
 						<input class="btn btn-outline-dark" type="submit" value="Editar">
 					</form>
 					<form action="${pageContext.request.contextPath}/funStatus" method="post">
-						<input type="hidden" value="${pelis.idPelicula}" name="codigoP">
+						<input type="hidden" value="${funciones.idFuncion}" name="codF">
 						 <c:if test="${funciones.activo == false}">
 							<input class="btn btn-outline-dark" type="submit" value="Activar">
 						</c:if>
@@ -53,7 +54,7 @@
 					<td>${funciones.pelicula}</td>
 					<td>${funciones.formato}</td>
 					<td>${funciones.activoDelegate}</td>
-				
+					
 				</tr>	
 			</c:forEach>
 		

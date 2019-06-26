@@ -12,8 +12,12 @@ import com.uca.capas.dto.FunPelForDTO;
 @Repository
 public interface FuncionRepository extends JpaRepository<Funcion, Integer>{
 
-	@Query("SELECT new com.uca.capas.dto.FunPelForDTO(f.hora, f.fecha, pe.nombre, fo.formato, f.activo) "
+	@Query("SELECT new com.uca.capas.dto.FunPelForDTO(f.idFuncion, f.hora, f.fecha, pe.nombre, fo.formato, f.activo) "
 			+ "FROM com.uca.capas.domain.Funcion f INNER JOIN f.pelicula pe INNER JOIN f.formato fo" )
 	public List<FunPelForDTO> fetchFuncPelForInnerJoin();
+	
+	@Query("SELECT new com.uca.capas.dto.FunPelForDTO(f.idFuncion, f.hora, f.fecha, pe.nombre, fo.formato, f.activo) "
+			+ "FROM com.uca.capas.domain.Funcion f INNER JOIN f.pelicula pe INNER JOIN f.formato fo where f.idFuncion = ?1" )
+	public FunPelForDTO fetchOneFuncPelForInnerJoin(Integer id);
 }
 

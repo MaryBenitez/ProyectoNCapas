@@ -2,6 +2,7 @@ package com.uca.capas.dto;
 
 public class FunPelForDTO {
 	
+	private Integer idFuncion;
 	private String hora;
 	private String fecha;
 	private String pelicula;
@@ -15,15 +16,24 @@ public class FunPelForDTO {
 
 	
 	
-	public FunPelForDTO(String hora, String fecha, String pelicula, String formato, Boolean activo) {
+	public FunPelForDTO(Integer idFuncion, String hora, String fecha, String pelicula, String formato, Boolean activo) {
 		super();
+		this.idFuncion = idFuncion;
 		this.hora = hora;
 		this.fecha = fecha;
 		this.pelicula = pelicula;
 		this.formato = formato;
 		this.activo = activo;
+		
 	}
 
+	
+	public Integer getIdFuncion() {
+		return idFuncion;
+	}
+	public void setIdFuncion(Integer idFuncion) {
+		this.idFuncion = idFuncion;
+	}
 	public String getHora() {
 		return hora;
 	}

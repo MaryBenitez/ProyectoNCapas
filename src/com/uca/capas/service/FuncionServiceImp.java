@@ -20,6 +20,8 @@ public class FuncionServiceImp implements FuncionService{
 	PeliculasService pService;
 	@Autowired
 	FormatoService foService;
+	
+
 	@Override
 	public List<Funcion> findAll() {
 		// TODO Auto-generated method stub
@@ -30,7 +32,7 @@ public class FuncionServiceImp implements FuncionService{
 	@Override
 	public Funcion findOne(Integer id) {
 		// TODO Auto-generated method stub
-		return funRepo.getOne(id);
+		return funRepo.findById(id).get();
 	}
 
 	@Override
@@ -38,10 +40,12 @@ public class FuncionServiceImp implements FuncionService{
 		// TODO Auto-generated method stub
 		return funRepo.fetchFuncPelForInnerJoin();
 	}
+	
 	public Funcion save(FunPelForDTO dto) {
 		Pelicula p = pService.findOne(Integer.parseInt(dto.getPelicula()));
 		Formato fo =  foService.findOne(Integer.parseInt(dto.getFormato()));
 		Funcion f = new Funcion();
+		f.setIdFuncion(dto.getIdFuncion());
 		f.setHora(dto.getHora());
 		f.setFecha(dto.getFecha());
 		f.setActivo(true);
@@ -50,6 +54,18 @@ public class FuncionServiceImp implements FuncionService{
 		
 		
 		return funRepo.save(f);
+	}
+
+	@Override
+	public Funcion normalSave(Funcion f) {
+		// TODO Auto-generated method stub
+		return funRepo.save(f);
+	}
+
+	@Override
+	public FunPelForDTO findOneDTO(Integer id) {
+		// TODO Auto-generated method stub
+		return funRepo.fetchOneFuncPelForInnerJoin(id);
 	}
 	
 }

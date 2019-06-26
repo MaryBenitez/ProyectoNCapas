@@ -18,6 +18,7 @@
 	<div style="width:50%; margin: auto;">
 	<h1 >Datos de la Funci&oacute;n</h1>
 		<form:form class="text-center border border-light" action="${pageContext.request.contextPath}/saveFuncion" method="POST" modelAttribute="funcionDTO">
+			<input type="text" name="idFuncion" value="${funcion.idFuncion }">
 			<label>Seleccione la pelicula</label><br>
 			<select name="pelicula" class="form-control">
 				<c:forEach items="${pelis}" var="pelis">
