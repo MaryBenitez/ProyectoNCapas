@@ -29,6 +29,10 @@ public class Funcion {
 	private String fecha;
 	@Column(name="state")
 	private Boolean activo;
+	@Column(name="casientoe")
+	private Integer casientoe;
+	@Column(name="casienton")
+	private Integer casienton;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="fk_pelicula")
@@ -37,11 +41,6 @@ public class Funcion {
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="fk_formato")
 	private Formato formato;
-	
-	@OneToMany(mappedBy="funcions",cascade = 
-		{ CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, 
-				CascadeType.REMOVE},fetch=FetchType.EAGER)
-	private Set<FunxSala> funxsala;
 	
 	@OneToMany(mappedBy="funcion",cascade = 
 		{ CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH, 
@@ -84,6 +83,19 @@ public class Funcion {
 	}
 	public void setFormato(Formato formato) {
 		this.formato = formato;
+	}
+	
+	public Integer getCasientoe() {
+		return casientoe;
+	}
+	public void setCasientoe(Integer casientoe) {
+		this.casientoe = casientoe;
+	}
+	public Integer getCasienton() {
+		return casienton;
+	}
+	public void setCasienton(Integer casienton) {
+		this.casienton = casienton;
 	}
 	public String getActivoDelegate() {
 		if(this.activo == null) return "";

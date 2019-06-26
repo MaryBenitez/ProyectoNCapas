@@ -51,7 +51,8 @@ public class FuncionServiceImp implements FuncionService{
 		f.setActivo(true);
 		f.setPelicula(p);
 		f.setFormato(fo);
-		
+		f.setCasientoe(75);
+		f.setCasienton(75);
 		
 		return funRepo.save(f);
 	}

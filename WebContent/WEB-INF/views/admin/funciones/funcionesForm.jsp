@@ -22,7 +22,16 @@
 			<label>Seleccione la pelicula</label><br>
 			<select name="pelicula" class="form-control">
 				<c:forEach items="${pelis}" var="pelis">
-					<option value="${pelis.idPelicula}">${pelis.nombre}</option>
+					<c:choose>
+						<c:when test="${pelis.nombre == funcionDTO.pelicula}" >
+						
+							<option value="${pelis.idPelicula}" selected="selected">${pelis.nombre}</option>
+						</c:when>
+						<c:otherwise>
+							<option value="${pelis.idPelicula}">${pelis.nombre}</option>
+						
+						</c:otherwise>
+					</c:choose>
 				</c:forEach>
 			</select><br>
 			<label>Ingrese la Fecha</label><br>
@@ -32,9 +41,19 @@
 			<label>Ingrese el formato de la pelicula</label><br>
 			<select name="formato" class="form-control">
 				<c:forEach items="${formato}" var="formato">
-					<option value="${formato.id_formato}">${formato.formato}</option>
+					<c:choose>
+						<c:when test="${formato.formato == funcionDTO.formato }" >						
+							<option value="${formato.id_formato}" selected="selected">${formato.formato}</option>
+						</c:when>
+						<c:otherwise>
+							<option value="${formato.id_formato}" >${formato.formato}</option>
+							
+						</c:otherwise>
+					</c:choose>
+					
 				</c:forEach>
 			</select><br>
+			
 			<input type="submit" class="btn btn-info my-4 btn-block" value="Guardar Función">
 			
 			

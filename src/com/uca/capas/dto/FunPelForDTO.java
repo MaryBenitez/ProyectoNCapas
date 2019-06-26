@@ -73,6 +73,9 @@ public class FunPelForDTO {
 		this.activo = activo;
 	}
 	
+
+
+
 	public String getActivoDelegate() {
 		if(this.activo == null) return "";
 		else {
