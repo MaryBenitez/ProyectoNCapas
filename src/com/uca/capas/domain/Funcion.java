@@ -31,8 +31,7 @@ public class Funcion {
 	private Boolean activo;
 	@Column(name="casientoe")
 	private Integer casientoe;
-	@Column(name="casienton")
-	private Integer casienton;
+	
 	
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="fk_pelicula")
@@ -91,17 +90,13 @@ public class Funcion {
 	public void setCasientoe(Integer casientoe) {
 		this.casientoe = casientoe;
 	}
-	public Integer getCasienton() {
-		return casienton;
-	}
-	public void setCasienton(Integer casienton) {
-		this.casienton = casienton;
-	}
 	public String getActivoDelegate() {
 		if(this.activo == null) return "";
 		else {
 			return activo == true ?"Activa":"Inactiva";
 		}
 	}
+
+	
 	
 }

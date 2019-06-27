@@ -52,7 +52,7 @@ public class FuncionServiceImp implements FuncionService{
 		f.setPelicula(p);
 		f.setFormato(fo);
 		f.setCasientoe(75);
-		f.setCasienton(75);
+
 		
 		return funRepo.save(f);
 	}
@@ -67,6 +67,12 @@ public class FuncionServiceImp implements FuncionService{
 	public FunPelForDTO findOneDTO(Integer id) {
 		// TODO Auto-generated method stub
 		return funRepo.fetchOneFuncPelForInnerJoin(id);
+	}
+
+	@Override
+	public List<Funcion> finByPelicula(Pelicula id) {
+		// TODO Auto-generated method stub
+		return funRepo.findByPelicula(id);
 	}
 	
 }

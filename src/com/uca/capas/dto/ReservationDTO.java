@@ -1,19 +1,20 @@
 package com.uca.capas.dto;
 
 public class ReservationDTO {
-
+	
+	private Integer idUsuario;
 	private Integer idFuncion;
 	private String hora;
 	private String fecha;
 	private Integer idPelicula;
 	private String nPelicula;
 	private String formato;
-	private long saldo;
-	private Integer asientoD;
-	private Integer asientoR;
-	public ReservationDTO(Integer idFuncion, String hora, String fecha, Integer idPelicula, String nPelicula,
-			String formato, long saldo, Integer asientoD, Integer asientoR) {
+	private Double saldo;
+	private Integer asiento;
+	public ReservationDTO(Integer idUsuario, Integer idFuncion, String hora, String fecha, Integer idPelicula, String nPelicula,
+			String formato, Double saldo, Integer asiento) {
 		super();
+		this.idUsuario = idUsuario;
 		this.idFuncion = idFuncion;
 		this.hora = hora;
 		this.fecha = fecha;
@@ -21,9 +22,22 @@ public class ReservationDTO {
 		this.nPelicula = nPelicula;
 		this.formato = formato;
 		this.saldo = saldo;
-		this.asientoD = asientoD;
-		this.asientoR = asientoR;
+		this.asiento = asiento;
+	
 	}
+	
+	public ReservationDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Integer idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 	public Integer getIdFuncion() {
 		return idFuncion;
 	}
@@ -60,24 +74,19 @@ public class ReservationDTO {
 	public void setFormato(String formato) {
 		this.formato = formato;
 	}
-	public long getSaldo() {
+	public Double getSaldo() {
 		return saldo;
 	}
-	public void setSaldo(long saldo) {
+	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
-	public Integer getAsientoD() {
-		return asientoD;
+	public Integer getAsiento() {
+		return asiento;
 	}
-	public void setAsientoD(Integer asientoD) {
-		this.asientoD = asientoD;
+	public void setAsiento(Integer asiento) {
+		this.asiento = asiento;
 	}
-	public Integer getAsientoR() {
-		return asientoR;
-	}
-	public void setAsientoR(Integer asientoR) {
-		this.asientoR = asientoR;
-	}
+	
 	
 	
 	

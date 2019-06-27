@@ -75,5 +75,17 @@ public class Reserva {
 	public void settCuenta(Double tCuenta) {
 		this.tCuenta = tCuenta;
 	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public Funcion getFuncion() {
+		return funcion;
+	}
+	public void setFuncion(Funcion funcion) {
+		this.funcion = funcion;
+	}
 	
 }

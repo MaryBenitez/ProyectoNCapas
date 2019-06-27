@@ -11,4 +11,6 @@ public interface UsuarioService {
 	public Usuario findOne(Integer id);
 
 	public void save(Usuario p);
+	
+	public Usuario findUsuario(String user, String pass);
 }

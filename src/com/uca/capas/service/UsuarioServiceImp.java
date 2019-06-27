@@ -31,4 +31,10 @@ public class UsuarioServiceImp implements UsuarioService{
 		
 	}
 
+	@Override
+	public Usuario findUsuario(String user, String pass) {
+		// TODO Auto-generated method stub
+		return usrRepo.findUser(user, pass);
+	}
+
 }
