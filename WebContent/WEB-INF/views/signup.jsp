@@ -14,7 +14,7 @@
 <body>
 	<div style="width:50%; margin: auto;">
 	<h1 >Datos del Usuario</h1>
-		<form:form class="text-center border border-light" action="${pageContext.request.contextPath}/saveUser" method="POST" modelAttribute="usuario">
+		<form:form class="text-center border border-light" action="${pageContext.request.contextPath}/agregarUser" method="POST" modelAttribute="usuario">
 		<form:input type="hidden" name="idUsr" path="idUsr" value="${usuario.idUsr}"/>
 		<label>Username : </label>
 		<form:input class="form-control" type="text" name="usuario" path="usuario" value="${usuario.usuario}"/>
@@ -28,12 +28,7 @@
 		<form:input class="form-control" type="date" name="f_nacimiento" path="f_nacimiento" value="${usuario.f_nacimiento}"/>
 		<label>Direccion: </label>
 		<form:input class="form-control" type="text" name="direccion" path="direccion" value="${usuario.direccion}"/>
-		<label>Estado: </label>
-		<form:radiobutton name="estado" path="estado" value="true"/><label>Activo</label>
-		<form:radiobutton name="estado" path="estado" value="false"/><label>Inactivo</label><br>
-		<label>Tipo: </label>
-		<form:radiobutton name="tipo" path="tipo" value="false"/><label>Administrador</label>
-		<form:radiobutton name="tipo" path="tipo" value="true"/><label>Cliente</label><br>
+		
 		<label>Pais: </label>
 		<select id="select" name="select">
 		<c:forEach items="${paises}" var="paises">

@@ -27,6 +27,16 @@ public class MainController {
 	public String userDashboard() {
 		return "dashboard_user";
 	}
+	@RequestMapping("/logout")
+	public ModelAndView logout(@RequestParam ("idUsuario") Integer id) {
+		System.out.println(id);
+		ModelAndView mav = new ModelAndView();
+		Usuario usuario  = uService.findOne(id);
+		usuario.setIniciado(false);
+		uService.save(usuario);
+		mav.setViewName("redirect:/");
+		return mav;
+	}
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	@ResponseBody
 	public int validate(@RequestParam(value = "user") String name,

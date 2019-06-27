@@ -227,7 +227,7 @@ input::-moz-focus-inner {
         
        </form>
        
-          <form action="${pageContext.request.contextPath}/addUser">
+          <form action="${pageContext.request.contextPath}/addUser2">
         		<input type="submit" id="submit2" value="Sing up">
         </form>
       

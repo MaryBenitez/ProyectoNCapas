@@ -52,12 +52,81 @@ public class AdministrationUsersController {
 		mav.addObject("munis", muni);
 		mav.addObject("deps", dep);
 		mav.addObject("usuario",usr);
-		mav.setViewName("admin/userForm");
+		mav.setViewName("admin/peliculas/userForm");
+		return mav;
+	}
+	@RequestMapping("/addUser2")
+	public ModelAndView adduser() {
+		ModelAndView mav = new ModelAndView();
+		Usuario usr = new Usuario();
+		List<Pais> pais = paisServ.findAll();
+		List<Municipio> muni = muniServ.findAll();
+		List<Departamento> dep = depServ.findAll();
+		mav.addObject("paises",pais);
+		mav.addObject("munis", muni);
+		mav.addObject("deps", dep);
+		mav.addObject("usuario",usr);
+		mav.setViewName("signup");
 		return mav;
 	}
 	
 	@RequestMapping("/saveUser")
 	public ModelAndView saveMovies(@ModelAttribute ("usuario") Usuario p, 
+			@RequestParam("select") Integer idp, 
+			@RequestParam("select2") Integer idd, 
+			@RequestParam("select3") Integer idm,
+			@RequestParam("iniciado") Boolean act,
+			@RequestParam("saldo") Double saldo,
+			@RequestParam("tipo") Boolean tipo) {
+		ModelAndView mav = new ModelAndView();
+		Pais pais = paisServ.findOne(idp);
+		Departamento dept = depServ.findOne(idd);
+		Municipio muni = muniServ.findOne(idm);
+		p.setPais(pais);
+		p.setMunicipio(muni);
+		p.setDepartamento(dept);
+		if(p.getIdUsr()== null) {
+			p.setSaldo(20.00);
+			p.setIniciado(false);
+		}else {
+			p.setSaldo(saldo);
+			p.setIniciado(act);
+		}
+		p.setTipo(tipo);
+		userServ.save(p);
+		mav.setViewName("redirect:adminUsers/");
+		return mav;
+	}
+	
+	@RequestMapping("/updateUser")
+	public ModelAndView updateMovies( @RequestParam ("codigoP") Integer p) {
+		ModelAndView mav = new ModelAndView();
+		Usuario u = userServ.findOne(p);
+		List<Pais> pais = paisServ.findAll();
+		List<Municipio> muni = muniServ.findAll();
+		List<Departamento> dep = depServ.findAll();
+		mav.addObject("paises",pais);
+		mav.addObject("munis", muni);
+		mav.addObject("deps", dep);
+		mav.addObject("usuario",u);
+		mav.setViewName("admin/peliculas/userForm");
+		return mav;
+	}
+	
+	@RequestMapping("/statusUsr")
+	public ModelAndView editEstadoUser(@RequestParam ("codigoP") Integer id ) {
+		ModelAndView mav = new ModelAndView();
+		Usuario user = new Usuario();
+		user = userServ.findOne(id);
+		user.setEstado(!user.getEstado());
+		userServ.save(user);
+		mav.addObject("peli", user);
+		mav.setViewName("redirect:adminUsers/");
+		return mav;
+	}
+	
+	@RequestMapping("/agregarUser")
+	public ModelAndView agregarUser(@ModelAttribute ("usuario") Usuario p, 
 			@RequestParam("select") Integer idp, 
 			@RequestParam("select2") Integer idd, 
 			@RequestParam("select3") Integer idm,
@@ -77,35 +146,11 @@ public class AdministrationUsersController {
 			p.setSaldo(saldo);
 			p.setIniciado(act);
 		}
+		p.setEstado(false);
+		p.setTipo(true);
 		userServ.save(p);
-		mav.setViewName("redirect:adminUsers/");
+		mav.setViewName("redirect:/");
 		return mav;
 	}
 	
-	@RequestMapping("/updateUser")
-	public ModelAndView updateMovies( @RequestParam ("codigoP") Integer p) {
-		ModelAndView mav = new ModelAndView();
-		Usuario u = userServ.findOne(p);
-		List<Pais> pais = paisServ.findAll();
-		List<Municipio> muni = muniServ.findAll();
-		List<Departamento> dep = depServ.findAll();
-		mav.addObject("paises",pais);
-		mav.addObject("munis", muni);
-		mav.addObject("deps", dep);
-		mav.addObject("usuario",u);
-		mav.setViewName("admin/userForm");
-		return mav;
-	}
-	
-	@RequestMapping("/statusUsr")
-	public ModelAndView editEstadoUser(@RequestParam ("codigoP") Integer id ) {
-		ModelAndView mav = new ModelAndView();
-		Usuario user = new Usuario();
-		user = userServ.findOne(id);
-		user.setEstado(!user.getEstado());
-		userServ.save(user);
-		mav.addObject("peli", user);
-		mav.setViewName("redirect:adminUsers/");
-		return mav;
-	}
 }
