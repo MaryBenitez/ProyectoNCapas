@@ -26,8 +26,9 @@ public class UsuarioServiceImp implements UsuarioService{
 	}
 
 	@Override
-	public void save(Usuario p) {
-		usrRepo.save(p);
+	public Usuario save(Usuario p) {
+		 
+		return usrRepo.save(p);
 		
 	}
 

@@ -8,7 +8,13 @@
 </head>
 <body>
 <h1>login xd</h1>
-<p>PAGINA USER</p>
+<p>DASHBOARD</p>
 
+<form action="${pageContext.request.contextPath}/cartelera">
+	<input type="submit" value="Ver Cartelera">
+</form>
+<form >
+	<input type="submit" value="Cerrar Sesion">
+</form>
 </body>
 </html>

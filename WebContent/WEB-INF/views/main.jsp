@@ -4,7 +4,11 @@
 <html>
 <head>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+  
+  	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+  	
+
 	<meta charset="ISO-8859-1">
 	<title>Login</title>
 	<style type="text/css">
@@ -219,13 +223,14 @@ input::-moz-focus-inner {
         <input type="password" id="pass" name="pass" placeholder="Password">
         
         	<input type="submit" id="submit" value="Login">
-        	<label><p style="color: red">${mjs}</p></label>
+        	
         
        </form>
        
-        <form action="${pageContext.request.contextPath}/addUser">
+          <form action="${pageContext.request.contextPath}/addUser">
         		<input type="submit" id="submit2" value="Sing up">
         </form>
+      
 		<script type='text/javascript'>
 		
 	   	$("#login").on('submit', function (e) {
@@ -236,19 +241,46 @@ input::-moz-focus-inner {
 					data:  $("#login").serialize(),
 					type: 'POST', 
 					success: function (result) {
-						console.log(result);
-						localStorage.setItem("idUsuario",result);
-						location.href = "${pageContext.request.contextPath}/cartelera"
+						if(result == 0){
+							console.log(result.responseText);
+							localStorage.setItem("idUsuario",result);
+							location.href = "${pageContext.request.contextPath}/admin/dashboard"
+						}else if(result == -1){
+							console.log(result);
+							Swal.fire({
+								  title: 'Warning',
+								  text: 'Se ha iniciado sesión anteriormente con esta cuenta',
+								  type: 'warning',
+								  confirmButtonText: 'Ok',
+								 
+								}).then((result) => {
+								  if (result.value) {
+								    
+									location.href = "${pageContext.request.contextPath}/dashboard"
+								  
+						
+								  } 
+								});
+						}else{
+							console.log(result.responseText);
+							localStorage.setItem("idUsuario",result);
+							location.href = "${pageContext.request.contextPath}/dashboard"
+
+						}
+						
 					},
 					error: function (result) {
-						swal("Usuario o contraseña inválido", {
-				 	    	icon: "error",
-		 		   		});
+						console.log(result.responseText);
+						Swal.fire({
+							  type: 'error',
+							  title: 'Oops...',
+							  text: 'Usuario o contraseña inválido / Cuenta Inactiva',
+						
+							})
 					}
 				});
 		});
     </script>
-        
         
       </div>
     </div>

@@ -13,4 +13,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	@Query(nativeQuery = true, value = "select * from public.usuario where usuario = ?1 and pass = ?2 and estado = true")
 	public Usuario findUser(String user, String pass);
 	
+
 }
