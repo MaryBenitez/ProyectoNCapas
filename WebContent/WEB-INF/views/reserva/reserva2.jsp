@@ -6,37 +6,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 </head>
 <body>
+<div style="width:50%; margin: auto;">
 	<h1>Reserva</h1>
-	<form:form action="${pageContext.request.contextPath}/addReserva" method="post" modelAttribute="reservaDTO">
+	<form:form id="target" class="text-center border border-light" action="${pageContext.request.contextPath}/addReserva" method="post" modelAttribute="reservaDTO">
+	<label style="font-weight:bold;">Asientos Disponibles: </label>
 	<label>${funcion.casientoe}</label><br>
+	<label style="font-weight:bold;">Formato:</label>
 	<label>${funcion.formato.formato}</label><br>
+	<label style="font-weight:bold;">Hora de la Funcion:</label>
 	<label>${funcion.hora}</label><br>
-	<label>Cantidad de Asientos: </label>
+	<label style="font-weight:bold;">Cantidad de Asientos: </label>
 	<form:input type="hidden" name="fecha" path="fecha" value="${funcion.fecha}" />
 	
-	<form:input type="text" id="asiento" name="asiento" path="asiento" /><br>
-	<script>
-		function check(){
-			var n = document.getElementById("asiento").value;
-			if (n > 15){
-				swal("No puede reservar mas de 15 asientos", {
-		 	    	icon: "error",
- 		   		});
-				}
-			}
-	</script>
+	<form:input class="form-control" type="text" id="asiento" name="asiento" path="asiento"/><br>
 	<label>Desea utilizar su saldo?</label>
+		
 		<input type="checkbox" name="is" id="is" ><br>
 		<label>Ingrese cantidad:</label>
-		<form:input type="text" name="saldo" id="saldo" path="saldo" disabled="true"/><br>
+		<form:input class="form-control" type="text" name="saldo" id="saldo" path="saldo" value="0" /><br>
 		<script>
 				localStorage.getItem("idUsuario");
 				$( function() {
@@ -45,7 +43,7 @@
 				            $("#saldo").prop("disabled", false);
 				        } else {
 				            $("#saldo").prop("disabled", true);
-				            $("#saldo").val('');
+				            $("#saldo").val('0');
 				        }
 				    });
 				});
@@ -55,8 +53,37 @@
 			$("#idUsuario").val(localStorage.getItem("idUsuario"));
 		</script>
 		<form:input type="hidden" name="idFuncion" path="idFuncion" value="${funcion.idFuncion}" />
-	<input type="submit" value="Reservar">
+	<input  class="btn btn-info my-4 btn-block" type="submit" value="Reservar">
 	</form:form>
+</div>
 	
 </body>
+	<script>
+		function check(){
+			/* var n = document.getElementById("asiento").value;
+			if (n > 15){
+				
+					Swal.fire({
+						  title: 'Warning',
+						  text: 'No se puede reservar mas de 15 asientos',
+						  type: 'warning',
+						  confirmButtonText: 'Ok',
+						 
+						});
+				}
+			} */
+			$( "#target" ).submit(function( event ) {
+				var n = document.getElementById("asiento").value;
+				if (n > 15){
+					
+						Swal.fire({
+							  title: 'Warning',
+							  text: 'No se puede reservar mas de 15 asientos',
+							  type: 'warning',
+							  confirmButtonText: 'Ok',
+							 
+							});
+					}
+				});
+	</script>
 </html>

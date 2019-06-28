@@ -2,6 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <meta charset="UTF-8">
 <title>Reservation</title>
 
@@ -24,22 +29,9 @@
 </style>
 
 </head>
-<body>
-	<h1>Cartelera</h1>
-	<%-- <table class="table table-hover" border="1">
-		
-		<c:forEach items="${pelicula}" var="pelicula">
-			<tr>
-				<td height="300px" width="200px">${pelicula.nombre}
-				<!-- <img src="data:image/png;base64,${imagen}" /></td> -->
-				<img height="300px" width="200px" src="data:image/jpeg;base64,${pelicula.imgDelegate}" />
-				<form action="${pageContext.request.contextPath}/reserva" method="post">
-					<input type="submit" value="Reservar">
-				</form>
-				</td>
-			</tr>
-		</c:forEach>
-	</table> --%>
+<body style="text-align: center">
+	<h1 class="display-3">Cartelera</h1>
+
 	<div class='container'>
 	<c:forEach items="${pelicula}" var="pelicula">
 				<!-- <img src="data:image/png;base64,${imagen}" /></td> -->
@@ -47,9 +39,11 @@
 				<span>${pelicula.nombre}</span>
 				<br>
 				<img height="300px" width="200px" src="data:image/jpeg;base64,${pelicula.imgDelegate}" />
+				<br><br>
 				<form action="${pageContext.request.contextPath}/reserva" method="post">
 					<input type="hidden" value="${pelicula.idPelicula }" name="idPeli">
-					<input type="submit" value="Reservar">
+					
+					<input class="btn btn-outline-dark" style="width:200px;" type="submit" value="Reservar">
 				</form>
 				</div>
 		</c:forEach>

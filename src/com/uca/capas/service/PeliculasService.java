@@ -11,4 +11,6 @@ public interface PeliculasService  {
 	public Pelicula save(Pelicula p);
 
 	public Pelicula findOne(Integer id);
+	
+	public List<Pelicula> findByEstado(Boolean status);
 }

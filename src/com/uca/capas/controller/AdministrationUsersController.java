@@ -114,11 +114,12 @@ public class AdministrationUsersController {
 	}
 	
 	@RequestMapping("/statusUsr")
-	public ModelAndView editEstadoUser(@RequestParam ("codigoP") Integer id ) {
+	public ModelAndView editEstadoUser(@RequestParam ("codigo") Integer id, @RequestParam("coment") String c) {
 		ModelAndView mav = new ModelAndView();
 		Usuario user = new Usuario();
 		user = userServ.findOne(id);
 		user.setEstado(!user.getEstado());
+		user.setComentario(c);
 		userServ.save(user);
 		mav.addObject("peli", user);
 		mav.setViewName("redirect:adminUsers/");

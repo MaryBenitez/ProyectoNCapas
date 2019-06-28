@@ -70,6 +70,17 @@ public class MainController {
 				}
 			}
 	}
+	@RequestMapping("/comment")
+	public ModelAndView comentario(@RequestParam("codigoP") Integer id) {
+		ModelAndView mav = new ModelAndView();
+		Usuario user = uService.findOne(id);
+		mav.addObject("codigo", user.getIdUsr());
+		mav.setViewName("comment");
+		
+		return mav;
+	}
+	
+	
 //	@RequestMapping(value = "/login",method = RequestMethod.POST)
 ////	@ResponseBody
 //	public ModelAndView main(@RequestParam(name = "user") String user, @RequestParam(name = "pass") String pass,

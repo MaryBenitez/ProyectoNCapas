@@ -32,4 +32,10 @@ public class PeliculasServiceImp implements PeliculasService{
 		return pelirepo.findById(id).get();
 	}
 
+	@Override
+	public List<Pelicula> findByEstado(Boolean status) {
+		// TODO Auto-generated method stub
+		return pelirepo.findByEstado(status);
+	}
+
 }

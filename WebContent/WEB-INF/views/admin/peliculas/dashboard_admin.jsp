@@ -10,12 +10,25 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style type="text/css">
+	.padre{
+		display: flex;
+		justify-content: center;
+	}
+	.hijo{
+		padding: 10px;
+		margin: 200px;
+		display: incline-block;
+	}
+</style>
 </head>
-<body>
-<h1>login xd</h1>
-<p>PAGINA ADMINISTRADOR</p>
+<body style="text-align: center">
+<div class="padre">
+<div class="hijo">
+<h1 class="display-3">Administrador
+	<small class="text-muted">Dashboard Administrador</small></h1>
 
-<table>
+<table class="table table-hover">
 	<tr>
 		<td> 
 			<form action="${pageContext.request.contextPath}/adminMovies" method="post">
@@ -32,9 +45,20 @@
 			<input class="btn btn-outline-dark" type="submit" value="Administrar Funciones">
 			</form>
 		</td>
+		<%-- <td> 
+			<form action="${pageContext.request.contextPath}/logout" method="post">
+			<input type="hidden" name="idUsuario" id="idUsuario">
+			<input class="btn btn-outline-dark" type="submit" value="Cerrar Sesión">
+			</form>
+		</td> --%>
 	</tr>
 </table>
 	
-
+</div>
+</div>
 </body>
+<script>
+	$("#idUsuario").val(localStorage.getItem("idUsuario"));
+	
+</script>
 </html>

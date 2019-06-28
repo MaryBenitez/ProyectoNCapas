@@ -11,7 +11,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
+<body style="text-align: center">
 <h1 class="display-3">Catalogo de peliculas
 	<small class="text-muted">Modulo Administrador</small></h1>
 	<table class="table table-hover">

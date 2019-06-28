@@ -13,7 +13,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="text-align: center">
 	
 	<h1 class="display-3">Catalogo de peliculas
 	<small class="text-muted">Modulo Administrador</small></h1>

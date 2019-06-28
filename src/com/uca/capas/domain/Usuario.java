@@ -155,4 +155,25 @@ public class Usuario {
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
 	}
+		
+	public String getEstadoDelegate() {
+		if(this.estado == null) return "";
+		else {
+			return estado == true ?"Activo":"Inactivo";
+		}
+	}
+	
+	public String getTipoDelegate() {
+		if(this.estado == null) return "";
+		else {
+			return estado == true ?"Usuario":"Administrador";
+		}
+	}
+	
+	public String getIniciadoDelegate() {
+		if(this.estado == null) return "";
+		else {
+			return estado == true ?"Loggeado":"Desloggeado";
+		}
+	}
 }

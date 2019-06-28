@@ -18,6 +18,7 @@ public class AdministrationPelisController {
 	@Autowired
 	PeliculasService pelServ;
 	
+	
 	@RequestMapping("/admin/dashboard")
 	public String adminDashboard() {
 		return "admin/peliculas/dashboard_admin";

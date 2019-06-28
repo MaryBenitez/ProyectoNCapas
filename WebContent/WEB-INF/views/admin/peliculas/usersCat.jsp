@@ -11,10 +11,12 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
+<body style="text-align: center">
+<div>
 <h1 class="display-3">Usuarios
-	<small class="text-muted">Modulo Administrador</small></h1>
-	<table class="table table-hover">
+	<small style="text-align:center;"class="text-muted">Modulo Administrador</small></h1>
+	</div>
+	<table style="text-align:center;" class="table table-hover">
 		<tr class="table-light bg-info">
 			<th>Accion</th>
 			<th>Usuario</th>
@@ -37,24 +39,29 @@
 						<input type="hidden" value="${usuarios.idUsr}" name="codigoP">
 						<input class="btn btn-outline-dark" type="submit" value="Editar">
 					</form>
-					<form action="${pageContext.request.contextPath}/statusUsr" method="post">
-						<input type="hidden" value="${usuarios.idUsr}" name="codigoP">
 						<c:if test="${usuarios.estado == false}">
-							<input class="btn btn-outline-dark" type="submit" value="Activar">
+							<form action="${pageContext.request.contextPath}/statusUsr" method="post">
+								<input type="hidden" value="${usuarios.idUsr}" name="codigo">
+								<input type="hidden" value="" name="coment">
+								<input class="btn btn-outline-dark" type="submit" value="Activar">
+							</form>
 						</c:if>
-						<c:if test="${usuarios.estado == true}">
-							<input class="btn btn-outline-dark" type="submit" value="Desactivar">
+						<c:if test	="${usuarios.estado == true}">
+							<form action="${pageContext.request.contextPath}/comment" method="post">
+								<input type="hidden" value="${usuarios.idUsr}" name="codigoP">
+								<input class="btn btn-outline-dark" type="submit" value="Desactivar">
+							</form>
 						</c:if>
-					</form>
+					
 					</td>
 					<td>${usuarios.usuario}</td>
 					<td>${usuarios.nombre}</td>
 					<td>${usuarios.direccion}</td>
 					<td>${usuarios.saldo}</td>
-					<td>${usuarios.estado}</td>
-					<td>${usuarios.tipo}</td>
+					<td>${usuarios.estadoDelegate}</td>
+					<td>${usuarios.tipoDelegate}</td>
 					<td>${usuarios.comentario}</td>
-					<td>${usuarios.iniciado}</td>
+					<td>${usuarios.iniciadoDelegate}</td>
 				</tr>	
 			</c:forEach>
 	</table>

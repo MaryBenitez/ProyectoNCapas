@@ -1,5 +1,6 @@
 package com.uca.capas.service;
 
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,12 @@ public class ReservaServiceImp implements ReservaService{
 		Usuario u = uService.findOne(id);
 		Reserva re = new Reserva();
 		Funcion f =  fService.findOne(idF);
-		re.setFecha(r.getFecha());
+		Calendar c = Calendar.getInstance();
+		String dia = Integer.toString(c.get(Calendar.DATE));
+		String mes =Integer.toString(c.get(Calendar.MONTH)+1);
+		String annio = Integer.toString(c.get(Calendar.YEAR));
+		String fecha = annio.concat("-"+mes+"-"+dia);
+		re.setFecha(fecha);
 		re.setaCantidad(r.getAsiento());
 		re.setSubTotal(5.0);
 		if(r.getSaldo() == null) {
@@ -53,6 +59,18 @@ public class ReservaServiceImp implements ReservaService{
 		re.setFuncion(f);
 		fService.normalSave(f);
 		return resRep.save(re);
+	}
+
+	@Override
+	public List<Reserva> filtrar(Integer id, String fi, String ff) {
+		// TODO Auto-generated method stub
+		return resRep.filtrar(id, fi, ff);
+	}
+
+	@Override
+	public List<Reserva> findByUsuario(Usuario u) {
+		// TODO Auto-generated method stub
+		return resRep.findByUsuario(u);
 	}
 
 }

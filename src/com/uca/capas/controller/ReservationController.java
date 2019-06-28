@@ -14,11 +14,13 @@ import com.uca.capas.domain.Formato;
 import com.uca.capas.domain.Funcion;
 import com.uca.capas.domain.Pelicula;
 import com.uca.capas.domain.Reserva;
+import com.uca.capas.domain.Usuario;
 import com.uca.capas.dto.ReservationDTO;
 import com.uca.capas.service.FormatoService;
 import com.uca.capas.service.FuncionService;
 import com.uca.capas.service.PeliculasService;
 import com.uca.capas.service.ReservaService;
+import com.uca.capas.service.UsuarioService;
 
 @Controller
 public class ReservationController {
@@ -33,11 +35,13 @@ public class ReservationController {
 	PeliculasService pService;
 	@Autowired
 	ReservaService rService;
+	@Autowired
+	UsuarioService uService;
 	
 	@RequestMapping("/cartelera")
 	public ModelAndView showMovies() {
 		ModelAndView mav = new ModelAndView();
-		List<Pelicula> p = peliservice.findAll();
+		List<Pelicula> p = peliservice.findByEstado(true);
 		mav.addObject("pelicula",p ); 
 		mav.setViewName("reserva/Reservation");
 		
@@ -82,4 +86,27 @@ public class ReservationController {
 		mav.setViewName("reserva/resument");
 		return mav;
 	}
+	@RequestMapping("/historial")
+	public ModelAndView historial(@RequestParam("idUsuario") Integer id) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("historial");
+		Usuario u = uService.findOne(id);
+		List<Reserva> reserva = rService.findByUsuario(u);
+		mav.addObject("reserva", reserva);
+		return mav;
+		
+	}
+	@RequestMapping("/filtro")
+	public ModelAndView filtro(@RequestParam("cu") Integer id,@RequestParam("fechaI") String fi, @RequestParam("fechaF") String ff) {
+		ModelAndView mav = new ModelAndView();
+		Usuario usuario = uService.findOne(id);
+		List<Reserva> reserva = rService.findAll();
+		mav.addObject("reserva", reserva);
+		mav.setViewName("historial");
+		return mav;
+		
+	}
+	
+	
+	
 }
